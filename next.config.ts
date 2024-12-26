@@ -10,7 +10,6 @@ const nextConfig: NextConfig = {
     });
 
     // 你可以在这里添加其他自定义配置
-
     return config;
   },
 };
