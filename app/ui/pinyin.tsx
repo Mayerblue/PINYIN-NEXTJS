@@ -101,7 +101,7 @@ export default function Pinyin({ shengmu,yunmu,shendiao }: { shengmu: string; yu
                         </div>
                     ))}
                 </div>
-                <audio ref={audioRef} controls controlsList="nodownload" src={`http://appcdn.fanyi.baidu.com/zhdict/mp3/${mp3auido}.mp3`} style={{ display: 'none' }}>
+                <audio ref={audioRef} controls controlsList="nodownload" src={`https://www.purpleculture.net/mp3/${mp3auido}.mp3`} style={{ display: 'none' }}>
                 </audio>
             </div >
         </>
