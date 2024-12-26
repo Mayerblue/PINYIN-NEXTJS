@@ -1,7 +1,7 @@
 
 "use client"
 import { useState } from 'react';
-import { yunmu,complexYunmu,singleYunmu,frontNasalYunmu,backNasalYunmu } from '@/app/lib/yunmu';
+import { yunmu,complexYunmu,singleYunmu,frontNasalYunmu,backNasalYunmu } from '@/app/lib/yunmu.json';
 import PinyinLine from './pinyin-line';
 export default function Yunmu({ setYunmu }: { setYunmu: (key: string) => void }) {
     const [highlightedKey,setHighlightedKey] = useState('');

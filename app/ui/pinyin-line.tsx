@@ -8,8 +8,9 @@ export default function PinyinLine({ children }: { children: React.ReactNode }) 
 
     //获取children中文字的长度
     const text = (children as React.ReactNode[])[1]
-    const textLength = text?.toString().length;
+
     useEffect(() => {
+        const textLength = text?.toString().length;
         if (!textLength) return;
         const getCurrentWidth = textLength * 20 + 40;
         setCanvasWidth(getCurrentWidth)

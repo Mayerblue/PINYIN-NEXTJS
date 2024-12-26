@@ -1,0 +1,46 @@
+{
+    "yunmu": [
+        "ian",
+        "iao",
+        "uai",
+        "uan",
+        "uang",
+        "uo",
+        "ia",
+        "ua",
+        "iang",
+        "iong"
+    ],
+    "singleYunmu": [
+        "a",
+        "o",
+        "e",
+        "i",
+        "u",
+        "ü"
+    ],
+    "complexYunmu": [
+        "ai",
+        "ei",
+        "ui",
+        "ao",
+        "ou",
+        "iu",
+        "ie",
+        "ue",
+        "er"
+    ],
+    "frontNasalYunmu": [
+        "an",
+        "en",
+        "in",
+        "un",
+        "ün"
+    ],
+    "backNasalYunmu": [
+        "ang",
+        "eng",
+        "ing",
+        "ong"
+    ]
+}

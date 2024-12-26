@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-import { shengmu } from '@/app/lib/shengmu';
+import { shengmu } from '@/app/lib/shengmu.json';
 import PinyinLine from './pinyin-line';
 
 export default function Shengmu({ setShengmu }: { setShengmu: (key: string) => void }) {

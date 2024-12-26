@@ -1,22 +1,27 @@
 "use client"
 import { useState,useEffect,useRef } from 'react';
-import { pyInfos } from '@/app/lib/pymp3';
 import PinyinLine from './pinyin-line';
+import * as pyInfo from '@/app/lib/pymp3.json';
+type PyInfo = { sm: string; ym: string; sd: number; mp3: string; };
+type PyInfos = { [key: string]: PyInfo };
+const pyInfos: PyInfos = pyInfo as PyInfos;
 
 function queryPinYin(sm: string,ym: string,sd: number) {
     // 空数组存放符合条件的拼音结果
-    const rets = [];
+    const rets: { py: string; mp3: string }[] = [];
     // 循环遍历 pyInfos 对象中的每一个拼音信息
-    for (const item in pyInfos) {
-        const pyinfo = pyInfos[item];
-        if ((sm === "") || (sm === pyinfo.sm)) {
-            if ((ym === "") || (ym === pyinfo.ym)) {
-                if ((sd === 0) || (sd === pyinfo.sd)) {
-                    // 符合条件的拼音信息添加到 rets
-                    rets.push({ py: item,mp3: pyinfo.mp3 });
-                    // 如果 rets 数组长度大于等于10,则返回结果,终止循环遍历
-                    if (rets.length >= 10) {
-                        return rets;
+    for (const key in pyInfos) {
+        if (Object.prototype.hasOwnProperty.call(pyInfos,key)) {
+            const pyinfo = (pyInfos as { [key: string]: { sm: string; ym: string; sd: number; mp3: string; } })[key];
+            if ((sm === "") || (sm === (pyinfo.sm))) {
+                if ((ym === "") || (ym === pyinfo.ym)) {
+                    if ((sd === 0) || (sd === pyinfo.sd)) {
+                        // 符合条件的拼音信息添加到 rets
+                        rets.push({ py: key,mp3: pyinfo.mp3 });
+                        // 如果 rets 数组长度大于等于10,则返回结果,终止循环遍历
+                        if (rets.length >= 10) {
+                            return rets;
+                        }
                     }
                 }
             }
@@ -51,17 +56,18 @@ export default function Pinyin({ shengmu,yunmu,shendiao }: { shengmu: string; yu
     useEffect(() => {
         // 检查 audioRef 是否存在
         if (audioRef.current) {
+            const audioElement = audioRef.current;
             // 定义一个名为 handleCanPlay 的函数，用于处理音频可以播放的事件
             const handleCanPlay = () => {
                 // 调用 togglePlay 函数来播放或暂停音频
                 togglePlay();
             };
             // 为 audioRef.current 添加 'canplay' 事件监听器，当音频可以播放时调用 handleCanPlay 函数
-            audioRef.current.addEventListener('canplay',handleCanPlay);
+            audioElement.addEventListener('canplay',handleCanPlay);
             // 返回一个清理函数，用于在组件卸载或重新渲染时移除事件监听器
             return () => {
                 // 使用可选链操作符 ?. 来确保 audioRef.current 存在后再调用 removeEventListener
-                audioRef.current?.removeEventListener('canplay',handleCanPlay);
+                audioElement?.removeEventListener('canplay',handleCanPlay);
             };
         }
 
@@ -97,9 +103,7 @@ export default function Pinyin({ shengmu,yunmu,shendiao }: { shengmu: string; yu
                 </div>
                 <audio ref={audioRef} controls controlsList="nodownload" src={`http://appcdn.fanyi.baidu.com/zhdict/mp3/${mp3auido}.mp3`} style={{ display: 'none' }}>
                 </audio>
-
             </div >
-
         </>
     )
 }
