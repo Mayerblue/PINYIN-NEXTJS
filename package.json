@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "build": "next build",
-        "dev": "next dev",
+        "dev": "next dev --turbo",
         "start": "next start",
         "lint": "next lint"
     },
@@ -23,8 +23,7 @@
         "@types/react": "npm:types-react@19.0.0-rc.1",
         "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
         "eslint": "^9",
-        "eslint-config-next": "15.0.4",
-        "json-loader": "^0.5.7"
+        "eslint-config-next": "15.0.4"
     },
     "pnpm": {
         "overrides": {

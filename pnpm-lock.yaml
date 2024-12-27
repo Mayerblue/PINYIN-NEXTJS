@@ -58,9 +58,6 @@ importers:
       eslint-config-next:
         specifier: 15.0.4
         version: 15.0.4(eslint@9.17.0(jiti@1.21.7))(typescript@5.7.2)
-      json-loader:
-        specifier: ^0.5.7
-        version: 0.5.7
 
 packages:
 
@@ -1111,9 +1108,6 @@ packages:
 
   json-buffer@3.0.1:
     resolution: {integrity: sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==}
-
-  json-loader@0.5.7:
-    resolution: {integrity: sha512-QLPs8Dj7lnf3e3QYS1zkCo+4ZwqOiF9d/nZnYozTISxXWCfNs9yuky5rJw4/W34s7POaNlbZmQGaB5NiXCbP4w==}
 
   json-schema-traverse@0.4.1:
     resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}
@@ -2966,8 +2960,6 @@ snapshots:
       argparse: 2.0.1
 
   json-buffer@3.0.1: {}
-
-  json-loader@0.5.7: {}
 
   json-schema-traverse@0.4.1: {}
 

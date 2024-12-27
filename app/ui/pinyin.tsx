@@ -1,10 +1,7 @@
 "use client"
 import { useState,useEffect,useRef } from 'react';
 import PinyinLine from './pinyin-line';
-import * as pyInfo from '@/app/lib/pymp3.json';
-type PyInfo = { sm: string; ym: string; sd: number; mp3: string; };
-type PyInfos = { [key: string]: PyInfo };
-const pyInfos: PyInfos = pyInfo as PyInfos;
+import { pyInfos } from '@/app/lib/pymp3';
 
 function queryPinYin(sm: string,ym: string,sd: number) {
     // 空数组存放符合条件的拼音结果
@@ -12,7 +9,7 @@ function queryPinYin(sm: string,ym: string,sd: number) {
     // 循环遍历 pyInfos 对象中的每一个拼音信息
     for (const key in pyInfos) {
         if (Object.prototype.hasOwnProperty.call(pyInfos,key)) {
-            const pyinfo = (pyInfos as { [key: string]: { sm: string; ym: string; sd: number; mp3: string; } })[key];
+            const pyinfo = pyInfos[key]
             if ((sm === "") || (sm === (pyinfo.sm))) {
                 if ((ym === "") || (ym === pyinfo.ym)) {
                     if ((sd === 0) || (sd === pyinfo.sd)) {
