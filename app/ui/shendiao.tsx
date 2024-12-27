@@ -1,12 +1,14 @@
 "use client"
-import { useState } from 'react';
-export default function Shendiao({ setShendiao }: { setShendiao: (key: number) => void }) {
+import { useState,useContext } from 'react';
+import { PinyinContext } from '@/app/hooks/PinyinProvider'
+export default function Shendiao() {
     const shengdiao = ['*','ˉ','ˊ','ˇ','ˋ'];
     const [highlightedKey,setHighlightedKey] = useState(0);
+    const { shengmuSelect,yunmuSelect,updateContext } = useContext(PinyinContext);
 
     const handleClick = (key: number) => {
         setHighlightedKey(key);
-        setShendiao(key)
+        updateContext(shengmuSelect,yunmuSelect,key)
 
     };
     return (

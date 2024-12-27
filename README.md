@@ -5,6 +5,7 @@
 ## 环境
 - node版本：v22.12.0
 - npm版本：10.2.3
+
 ## 安装依赖
 ```
 pnpm install
@@ -14,6 +15,8 @@ pnpm install
 pnpm dev
 ```
 
+
+当前分支采用useContext的方式进行传值
 
 
 

@@ -1,7 +1,8 @@
 "use client"
-import { useState,useEffect,useRef } from 'react';
+import { useState,useEffect,useRef,useContext } from 'react';
 import PinyinLine from './pinyin-line';
 import { pyInfos } from '@/app/lib/pymp3';
+import { PinyinContext } from '@/app/hooks/PinyinProvider'
 
 function queryPinYin(sm: string,ym: string,sd: number) {
     // 空数组存放符合条件的拼音结果
@@ -27,14 +28,12 @@ function queryPinYin(sm: string,ym: string,sd: number) {
     return rets;
 }
 
-
-
 interface Pinyinmp3 {
     mp3: string,
     py: string
 }
 
-export default function Pinyin({ shengmu,yunmu,shendiao }: { shengmu: string; yunmu: string; shendiao: number }) {
+export default function Pinyin() {
     //results存放符合条件的拼音结果和对应的mp3结果
     const [results,setResults] = useState<Pinyinmp3[]>([]);
 
@@ -43,12 +42,15 @@ export default function Pinyin({ shengmu,yunmu,shendiao }: { shengmu: string; yu
 
     const shengdiaoChat = ['*','ˉ','ˊ','ˇ','ˋ'];
 
+    const { shengmuSelect,yunmuSelect,shendiaoSelect } = useContext(PinyinContext);
+
     //在shengmu、yunmu、shendiao发生变化时调用handleSearch函数
     useEffect(() => {
-        const rets = queryPinYin(shengmu,yunmu,shendiao);
+
+        const rets = queryPinYin(shengmuSelect,yunmuSelect,shendiaoSelect);
         setResults(rets);
         setMp3audio('')
-    },[shengmu,yunmu,shendiao]);
+    },[shengmuSelect,yunmuSelect,shendiaoSelect]);
 
     useEffect(() => {
         // 检查 audioRef 是否存在
@@ -83,7 +85,7 @@ export default function Pinyin({ shengmu,yunmu,shendiao }: { shengmu: string; yu
                 className={`pt-8 cursor-pointer text-4xl font-bold`} style={{ fontFamily: 'serif' }}
             >
                 <div className='text-center'>
-                    {shengmu}+{yunmu} &nbsp;  &nbsp; {shengdiaoChat[shendiao]}
+                    {shengmuSelect}+{yunmuSelect} &nbsp;  &nbsp; {shengdiaoChat[shendiaoSelect]}
                     {results.length === 0 ? ' ❌ ' : ''}
                 </div>
                 <div className='flex flex-wrap'>

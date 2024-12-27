@@ -1,13 +1,17 @@
 "use client"
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import { shengmu } from '@/app/lib/shengmu';
 import PinyinLine from './pinyin-line';
+import { PinyinContext } from '@/app/hooks/PinyinProvider'
 
-export default function Shengmu({ setShengmu }: { setShengmu: (key: string) => void }) {
+export default function Shengmu() {
     const [highlightedKey,setHighlightedKey] = useState('');
+
+    const { yunmuSelect,shendiaoSelect,updateContext } = useContext(PinyinContext);
     const handleClick = (key: string) => {
+        //更改useContext(PinyinContext)[0]的值
         setHighlightedKey(key);
-        setShengmu(key);
+        updateContext(key,yunmuSelect,shendiaoSelect);
     };
     return (
         <div className="flex flex-wrap ">

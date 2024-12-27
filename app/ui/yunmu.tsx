@@ -1,15 +1,16 @@
 
 "use client"
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import { yunmu,complexYunmu,singleYunmu,frontNasalYunmu,backNasalYunmu } from '@/app/lib/yunmu';
 import PinyinLine from './pinyin-line';
-export default function Yunmu({ setYunmu }: { setYunmu: (key: string) => void }) {
+import { PinyinContext } from '@/app/hooks/PinyinProvider'
+export default function Yunmu() {
     const [highlightedKey,setHighlightedKey] = useState('');
+    const { shengmuSelect,shendiaoSelect,updateContext } = useContext(PinyinContext);
 
     const handleClick = (key: string) => {
         setHighlightedKey(key);
-        //传值到父组件
-        setYunmu(key);
+        updateContext(shengmuSelect,key,shendiaoSelect)
     };
     return (
         <>
