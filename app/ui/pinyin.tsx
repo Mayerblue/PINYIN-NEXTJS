@@ -54,7 +54,7 @@ export default function Pinyin() {
 
     useEffect(() => {
         // 检查 audioRef 是否存在
-        if (audioRef.current) {
+        if (audioRef.current && mp3auido) {
             const audioElement = audioRef.current;
             // 定义一个名为 handleCanPlay 的函数，用于处理音频可以播放的事件
             const handleCanPlay = () => {
