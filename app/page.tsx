@@ -21,7 +21,7 @@ export default function Page() {
                 <div className=" justify-center  col-span-3 ">
                     <Shendiao setShendiao={setShendiao}></Shendiao>
 
-                    <div className="text-3xl text-center text-pink-500">拼读</div>
+                    <div className="text-3xl text-center text-pink-500">拼一拼，读一读</div>
 
                     <Pinyin shengmu={shengmu} yunmu={yunmu} shendiao={shendiao}></Pinyin>
 
