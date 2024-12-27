@@ -6,6 +6,23 @@
 - node版本：v23.2.0
 - npm版本：10.9.0
 - pnpm版本：9.13.2
+
+注意📢：
+这里使用node版本是v23.2.0,在`next.config.js`中添加以下配置,避免打包的时候出现：`Unexpected end of JSON input`。
+
+```
+  webpack: (config, { isServer }) => {
+    // 确保 Webpack 正确处理 JSON 文件
+    config.module.rules.push({
+      test: /\.json$/,
+      use: 'json-loader',
+      type: 'javascript/auto'
+    });
+    return config;
+  },
+```
+还有就是ts文件导出的数据用json文件替代改写，不然也会报错。
+
 ## 安装依赖
 ```
 pnpm install

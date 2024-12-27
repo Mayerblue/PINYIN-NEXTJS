@@ -8,9 +8,6 @@ const nextConfig: NextConfig = {
       use: 'json-loader',
       type: 'javascript/auto'
     });
-
-    // 你可以在这里添加其他自定义配置
-
     return config;
   },
 };
